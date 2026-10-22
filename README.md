@@ -160,6 +160,8 @@ Boas práticas aplicadas: chave da API fora do repositório; entrada do usuário
 - [Leaflet](https://leafletjs.com) — biblioteca de mapas (licença BSD-2-Clause).
 - [OpenStreetMap](https://www.openstreetmap.org/copyright) — tiles do mapa © colaboradores do OpenStreetMap.
 
+- https://youtu.be/OAq2c0bKm9o
+
 ## Licença
 
 Distribuído sob a licença **MIT**. Você pode usar, copiar, modificar e distribuir este projeto livremente, mantendo o aviso de copyright.
