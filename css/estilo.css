@@ -1,0 +1,286 @@
+/* ==========================================================================
+   Portal de Países — estilos
+   ========================================================================== */
+
+/* ---------- Estilo global ---------- */
+:root {
+    --cor-primaria: #2563eb;
+    --cor-primaria-escura: #1e3a8a;
+    --cor-fundo: #f1f5f9;
+    --cor-card: #ffffff;
+    --cor-texto: #0f172a;
+    --cor-texto-suave: #64748b;
+    --cor-borda: #e2e8f0;
+    --cor-erro-fundo: #fef2f2;
+    --cor-erro-borda: #fca5a5;
+    --cor-erro-texto: #991b1b;
+    --raio: 16px;
+    --sombra: 0 4px 20px rgba(15, 23, 42, 0.08);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+
+main.container { flex: 1; padding-top: 1.75rem; padding-bottom: 2rem; }
+
+.sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+/* ---------- Cabeçalho e formulário ---------- */
+.topo {
+    background: linear-gradient(135deg, var(--cor-primaria-escura), var(--cor-primaria));
+    color: #fff;
+    padding: 2.5rem 0 3rem;
+    text-align: center;
+}
+
+.topo h1 { margin: 0 0 .5rem; font-size: clamp(1.8rem, 5vw, 2.6rem); letter-spacing: -.5px; }
+.topo p { margin: 0 auto 1.5rem; max-width: 560px; opacity: .92; }
+
+.busca {
+    display: flex;
+    gap: .5rem;
+    max-width: 560px;
+    margin: 0 auto;
+    background: #fff;
+    padding: .4rem;
+    border-radius: 999px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, .25);
+}
+
+.busca input {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    padding: .7rem 1rem;
+    font-size: 1rem;
+    color: var(--cor-texto);
+}
+
+.busca button {
+    border: 0;
+    cursor: pointer;
+    padding: .7rem 1.6rem;
+    border-radius: 999px;
+    background: var(--cor-primaria);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background .2s, transform .15s;
+}
+
+.busca button:hover { background: var(--cor-primaria-escura); transform: translateY(-1px); }
+.busca:focus-within { box-shadow: 0 0 0 4px rgba(255, 255, 255, .35), 0 8px 30px rgba(0, 0, 0, .25); }
+
+/* ---------- Estado inicial ---------- */
+.estado-inicial {
+    text-align: center;
+    background: var(--cor-card);
+    border: 2px dashed var(--cor-borda);
+    border-radius: var(--raio);
+    padding: 3rem 1.5rem;
+    color: var(--cor-texto-suave);
+}
+.estado-icone { font-size: 3.5rem; }
+.estado-inicial h2 { margin: .5rem 0 .25rem; color: var(--cor-texto); }
+.estado-inicial p { margin: 0; }
+
+/* ---------- Mensagens de erro ---------- */
+.mensagem {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: 1rem 1.25rem;
+    border-radius: var(--raio);
+    animation: aparecer .35s ease;
+}
+.mensagem p { margin: 0; }
+.mensagem-erro {
+    background: var(--cor-erro-fundo);
+    border: 1px solid var(--cor-erro-borda);
+    color: var(--cor-erro-texto);
+    font-weight: 500;
+}
+
+.indisponivel { color: var(--cor-texto-suave); font-style: italic; }
+
+/* ---------- Layout dos resultados (CSS Grid) ---------- */
+#resultados { position: relative; min-height: 120px; transition: opacity .2s; }
+
+.pais {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "info mapa"
+        "front front";
+    gap: 1.25rem;
+    animation: aparecer .4s ease;
+}
+
+.card-info      { grid-area: info; }
+.card-mapa      { grid-area: mapa; }
+.card-fronteiras { grid-area: front; }
+
+.card {
+    background: var(--cor-card);
+    border-radius: var(--raio);
+    box-shadow: var(--sombra);
+    padding: 1.4rem;
+    min-width: 0;
+}
+.card h3 { margin: 0 0 .9rem; font-size: 1.05rem; }
+
+/* ---------- Informações principais ---------- */
+.info-topo { display: flex; align-items: center; gap: 1.1rem; margin-bottom: 1.3rem; }
+.info-topo h2 { margin: 0; font-size: 1.7rem; line-height: 1.2; }
+.oficial { margin: .2rem 0 0; color: var(--cor-texto-suave); font-size: .95rem; }
+
+.bandeira {
+    width: 120px;
+    max-height: 90px;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
+    flex-shrink: 0;
+    background: #f8fafc;
+}
+.bandeira-vazia {
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    height: 80px; padding: .4rem; font-size: .75rem; color: var(--cor-texto-suave);
+}
+
+.dados { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem 1rem; margin: 0; }
+.dados div { background: var(--cor-fundo); border-radius: 12px; padding: .7rem .9rem; min-width: 0; }
+.dados dt { font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--cor-texto-suave); }
+.dados dd { margin: .15rem 0 0; font-weight: 600; overflow-wrap: anywhere; }
+
+/* ---------- Mapa ---------- */
+#mapa {
+    height: 320px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #e2e8f0;
+}
+#mapa.mapa-indisponivel {
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 1rem; color: var(--cor-texto-suave); font-style: italic;
+}
+
+/* ---------- Fronteiras ---------- */
+.dica { margin: 0 0 .9rem; color: var(--cor-texto-suave); font-size: .9rem; }
+.sem-fronteiras { margin: 0; color: var(--cor-texto-suave); }
+
+.lista-fronteiras { display: flex; flex-wrap: wrap; gap: .6rem; }
+
+.btn-fronteira {
+    border: 1px solid var(--cor-borda);
+    background: #fff;
+    color: var(--cor-primaria-escura);
+    padding: .5rem 1rem;
+    border-radius: 999px;
+    font-size: .95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .2s, color .2s, transform .15s, box-shadow .2s;
+}
+.btn-fronteira:hover,
+.btn-fronteira:focus-visible {
+    background: var(--cor-primaria);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(37, 99, 235, .35);
+    outline: none;
+}
+
+/* ---------- Card flutuante (hover das fronteiras) ---------- */
+.card-flutuante {
+    position: absolute;
+    z-index: 2000;
+    width: 230px;
+    background: #fff;
+    border-radius: 12px;
+    padding: .9rem 1rem;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, .25);
+    border: 1px solid var(--cor-borda);
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity .18s ease, transform .18s ease;
+    font-size: .88rem;
+}
+.card-flutuante.visivel { opacity: 1; transform: translateY(0); }
+.card-flutuante .flag-mini {
+    width: 44px; height: auto; max-height: 32px; object-fit: contain;
+    border-radius: 4px; box-shadow: 0 1px 4px rgba(0, 0, 0, .25); margin-bottom: .4rem;
+}
+.card-flutuante h4 { margin: 0 0 .35rem; font-size: 1rem; }
+.card-flutuante p { margin: .15rem 0; color: var(--cor-texto-suave); }
+.card-flutuante strong { color: var(--cor-texto); }
+
+/* ---------- Estado de carregamento ---------- */
+#resultados.carregando { opacity: .5; pointer-events: none; }
+#resultados.carregando::after {
+    content: "";
+    position: absolute;
+    top: 60px; left: 50%;
+    width: 44px; height: 44px;
+    margin-left: -22px;
+    border: 4px solid rgba(37, 99, 235, .25);
+    border-top-color: var(--cor-primaria);
+    border-radius: 50%;
+    animation: girar .8s linear infinite;
+}
+
+/* ---------- Rodapé ---------- */
+.rodape { text-align: center; padding: 1.2rem; color: var(--cor-texto-suave); font-size: .85rem; }
+.rodape p { margin: 0; }
+.rodape a { color: var(--cor-primaria); }
+
+/* ---------- Animações ---------- */
+@keyframes aparecer { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes girar { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+}
+
+/* ---------- Responsividade ---------- */
+@media (max-width: 800px) {
+    .pais {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "info"
+            "mapa"
+            "front";
+    }
+}
+
+@media (max-width: 480px) {
+    .topo { padding: 2rem 0 2.5rem; }
+    .busca { border-radius: 20px; flex-direction: column; }
+    .busca input { text-align: center; }
+    .info-topo { flex-direction: column; text-align: center; }
+    .dados { grid-template-columns: 1fr; }
+    #mapa { height: 260px; }
+}
