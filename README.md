@@ -25,7 +25,7 @@ Usuário → Formulário → PHP → Requisição GET → REST Countries → JSO
 
 ## Tecnologias utilizadas
 
-- PHP 8.2.35+, 8.3.36+, 8.4.27+ ou 8.5.12+ (versões sem falhas de segurança conhecidas), com cURL e mbstring
+- PHP 8.5.12+ (versões sem falhas de segurança conhecidas), com cURL e mbstring
 - HTML5 e CSS3 (Grid e Flexbox)
 - JavaScript puro (sem frameworks)
 - [Leaflet.js](https://leafletjs.com) 1.9.4 (via CDN)
