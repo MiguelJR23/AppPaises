@@ -1,4 +1,4 @@
-  # 🌎 Portal de Países
+# 🌎 Portal de Países
 
 Aplicação web em **PHP, HTML, CSS e JavaScript** que consulta a [REST Countries API](https://restcountries.com) e mostra informações de qualquer país: dados gerais, bandeira, mapa interativo (Leaflet.js) e países vizinhos.
 
@@ -25,7 +25,7 @@ Usuário → Formulário → PHP → Requisição GET → REST Countries → JSO
 
 ## Tecnologias utilizadas
 
-- PHP 7.4+ (recomendado 8.x) com cURL e mbstring
+- PHP 8.2.35+, 8.3.36+, 8.4.27+ ou 8.5.12+ (versões sem falhas de segurança conhecidas), com cURL e mbstring
 - HTML5 e CSS3 (Grid e Flexbox)
 - JavaScript puro (sem frameworks)
 - [Leaflet.js](https://leafletjs.com) 1.9.4 (via CDN)
@@ -89,7 +89,7 @@ meu-app-paises/
 
 Informações necessárias:
 
-- PHP 7.4 ou superior com as extensões **cURL** e **mbstring** (ativas por padrão na maioria das instalações);
+- PHP em uma versão segura e atualizada: **8.2.35 ou superior, 8.3.36+, 8.4.27+ ou 8.5.12+**. Versões mais antigas (como 8.0 e 8.1) não recebem mais correções de segurança. Verifique com `php -v`. Extensões necessárias: **cURL**, **mbstring** e **openssl**;
 - conexão com a internet (API, Leaflet e tiles do mapa);
 - uma chave gratuita da REST Countries API v5 (veja "Chave de API").
 
@@ -159,8 +159,6 @@ Boas práticas aplicadas: chave da API fora do repositório; entrada do usuário
 - [REST Countries](https://restcountries.com) — dados dos países (API v5).
 - [Leaflet](https://leafletjs.com) — biblioteca de mapas (licença BSD-2-Clause).
 - [OpenStreetMap](https://www.openstreetmap.org/copyright) — tiles do mapa © colaboradores do OpenStreetMap.
-
-- https://youtu.be/OAq2c0bKm9o
 
 ## Licença
 
